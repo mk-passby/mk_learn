@@ -17,6 +17,7 @@
     <module>jvm-learn</module>
     <module>springboot</module>
     <module>mkplugin</module>
+    <module>juc-demo</module>
 
 
   </modules>
