@@ -20,7 +20,6 @@ public class SingletonDemo {
                     singletonDemo = new SingletonDemo();
                     return singletonDemo;
                 }
-
             }
         }
         return singletonDemo;
