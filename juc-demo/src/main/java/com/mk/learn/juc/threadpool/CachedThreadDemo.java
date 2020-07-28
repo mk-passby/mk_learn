@@ -4,17 +4,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 固定长度的线程池
- *
  * @program: learning-demo
- * @description:
+ * @description: 可缓存的线程池
  * @author: mk_passby
- * @create: 2020-07-26 11:35
+ * @create: 2020-07-26 11:47
  **/
-public class FixedThreadPoolDemo {
-
+public class CachedThreadDemo {
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         for (int i = 0; i < 10; i++) {
             executorService.submit(() -> {
                 System.out.println(Thread.currentThread().getName() + ":doing");
