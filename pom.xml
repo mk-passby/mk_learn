@@ -18,6 +18,7 @@
     <module>springboot</module>
     <module>mkplugin</module>
     <module>juc-demo</module>
+    <module>spring-demo</module>
 
 
   </modules>
