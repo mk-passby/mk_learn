@@ -11,11 +11,6 @@ import java.util.concurrent.TimeUnit;
  * @create: 2020-07-28 21:12
  **/
 public class DeadLockDemo {
-
-    private Object a = new Object();
-    private Object b = new Object();
-
-
     public static void main(String[] args) {
         DeadLock deadLock = new DeadLock();
 
