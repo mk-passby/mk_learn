@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: mk_passby
  * @create: 2020-07-23 20:44
  **/
-public class TraditionalDemo1 {
+public class ConditionDemo1 {
 
     public static void main(String[] args) {
         Resource1 resource1 = new Resource1();

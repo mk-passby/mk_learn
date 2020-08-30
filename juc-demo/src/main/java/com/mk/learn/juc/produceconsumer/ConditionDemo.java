@@ -11,14 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: mk_passby
  * @create: 2020-07-23 19:56
  **/
-public class TraditionalDemo {
+public class ConditionDemo {
 
     //交换打印线程
     public static void main(String[] args) {
         Resource resource = new Resource();
         new Thread(() -> {
             try {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 10; i++) {
                     resource.increase();
                 }
 
@@ -28,7 +28,7 @@ public class TraditionalDemo {
         }, "t1").start();
         new Thread(() -> {
             try {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 10; i++) {
                     resource.decrease();
                 }
             } catch (InterruptedException e) {
