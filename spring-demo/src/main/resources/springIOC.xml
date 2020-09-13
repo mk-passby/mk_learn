@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="user" class="com.mk.learn.spring.ioc.module.User">
+    <property name="name">
+      <value>AAA1111</value>
+    </property>
+    <property name="age" value="123"/>
+  </bean>
+
+  <!--setter注入-->
+  <bean id="setterModule" class="com.mk.learn.spring.ioc.module.SetterModule">
+    <property name="list">
+      <list>
+        <value>list1</value>
+        <value>list2</value>
+      </list>
+    </property>
+    <property name="integerSet">
+      <set>
+        <value>123</value>
+        <value>222</value>
+        <value>12</value>
+        <value>222</value>
+      </set>
+    </property>
+    <property name="map">
+      <map>
+        <entry>
+          <key>
+            <value>map1</value>
+          </key>
+          <value>1</value>
+        </entry>
+        <entry>
+          <key>
+            <value>map2</value>
+          </key>
+          <value>2</value>
+        </entry>
+      </map>
+    </property>
+    <property name="properties">
+      <props>
+        <prop key="key1">value1</prop>
+        <prop key="key2">value2</prop>
+      </props>
+    </property>
+  </bean>
+  <!--构造器注入-->
+  <bean id="constructorDemo" class="com.mk.learn.spring.ioc.module.ConstructorModule">
+    <constructor-arg value="123"/>
+    <constructor-arg value="AAAA"/>
+  </bean>
+</beans>
