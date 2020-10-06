@@ -5,6 +5,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @program: learning-demo
@@ -22,6 +24,28 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+        ctx.writeAndFlush(Unpooled.copiedBuffer(Calendar.getInstance().getTime()+"hello channelRead",CharsetUtil.UTF_8));
+
+//        //对于耗时的操作，可以使用eventloop中的队列，提交新线程执行，自定义的普通任务
+        ctx.channel().eventLoop().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TimeUnit.SECONDS.sleep(10);
+                    ctx.writeAndFlush(Unpooled.copiedBuffer(Calendar.getInstance().getTime()+"hello execute等待10s后",CharsetUtil.UTF_8));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        ctx.channel().eventLoop().schedule(new Runnable() {
+            @Override
+            public void run() {
+                ctx.writeAndFlush(Unpooled.copiedBuffer(Calendar.getInstance().getTime()+"hello schedule等待5s后",CharsetUtil.UTF_8));
+            }
+        },15,TimeUnit.SECONDS);
         System.out.println("Server:"+ctx);
         ByteBuf buf=(ByteBuf) msg;
         System.out.println("客户端发来的消息："+buf.toString(CharsetUtil.UTF_8));
