@@ -19,6 +19,7 @@
     <module>mkplugin</module>
     <module>juc-demo</module>
     <module>spring-demo</module>
+    <module>netty</module>
 
 
   </modules>
