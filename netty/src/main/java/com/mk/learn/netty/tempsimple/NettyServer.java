@@ -2,6 +2,7 @@ package com.mk.learn.netty.tempsimple;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -43,6 +44,17 @@ public class NettyServer {
         //10. 绑定端口 bind方法是异步的  sync方法是同步阻塞的
         ChannelFuture cf = serverBootstrap.bind(6668).sync();
         System.out.println("......Server is starting......");
+        //注册监听器
+        cf.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                if (cf.isSuccess()){
+                    System.out.println("监听成功");
+                }else{
+                    System.out.println("监听失败");
+                }
+            }
+        });
 
         //11. 关闭通道，关闭线程组
         cf.channel().closeFuture().sync(); //异步
