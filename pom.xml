@@ -18,6 +18,9 @@
     <module>springboot</module>
     <module>mkplugin</module>
     <module>juc-demo</module>
+    <module>spring-demo</module>
+    <module>netty</module>
+    <module>algs</module>
 
 
   </modules>
@@ -34,7 +37,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

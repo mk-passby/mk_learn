@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="user" class="com.mk.learn.spring.ioc.spring.beanlife.User" init-method="init"
+    destroy-method="destroyUser">
+    <property name="userName" value="AAAA"></property>
+  </bean>
+  <bean id="user1" class="com.mk.learn.spring.ioc.spring.beanlife.User1" scope="singleton"></bean>
+</beans>

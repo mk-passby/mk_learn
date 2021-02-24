@@ -1,0 +1,8 @@
+syntax = "proto3"; //版本
+option java_outer_classname = "StudentPoJO"; //设置生成的Java类
+
+//内部类的名称，是真正的PoJo 类
+message Student{ // message 的规定的
+   int32 id = 1; //PoJo 类的属性数据类型类型和 序号(不是属性值)
+   string name = 2;
+}
