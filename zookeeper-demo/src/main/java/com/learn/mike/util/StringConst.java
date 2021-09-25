@@ -11,6 +11,7 @@ public class StringConst {
     /**
      * zookeeper地址
      */
-    public static final String zkAddress = "192.168.11.128:2181,192.168.11.129:2181,192.168.11.130:2181";
+//    public static final String zkAddress = "192.168.11.128:2181,192.168.11.129:2181,192.168.11.130:2181";
+    public static final String zkAddress = "127.0.0.1:2181";
 
 }

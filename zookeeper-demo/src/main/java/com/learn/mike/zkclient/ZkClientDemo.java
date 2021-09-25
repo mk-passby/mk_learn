@@ -1,10 +1,11 @@
 package com.learn.mike.zkclient;
 
 import com.learn.mike.util.StringConst;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @program: learning-demo
@@ -16,7 +17,6 @@ public class ZkClientDemo {
 
     public static void main(String[] args) throws InterruptedException {
         ZkClient zkClient=new ZkClient(StringConst.zkAddress,5000);
-
         zkClient.createEphemeral("/TEST","ZZZZ".getBytes());
         zkClient.subscribeDataChanges("/TEST", new IZkDataListener() {
             @Override

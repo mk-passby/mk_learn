@@ -1,17 +1,14 @@
 package com.learn.mike.zookeeperApi;
 
 import com.learn.mike.util.StringConst;
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
-import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
+
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @program: learning-demo
@@ -24,9 +21,13 @@ public class ZkApiDemo {
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         ZooKeeper zooKeeper = new ZooKeeper(StringConst.zkAddress, 5000, new ZkWatcher());
         countDownLatch.await();
+        zooKeeper.wait();
         System.out.println("---开始API操作");
-        zooKeeper.exists("/test",true);
-        zooKeeper.create("/test","AA".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+        System.out.println(zooKeeper.exists("/test",true));
+        if (zooKeeper.exists("/test",true)!=null) {
+            zooKeeper.delete("/test",-1);
+        }
+        zooKeeper.create("/test","AA".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 
         System.out.println(new String(zooKeeper.getData("/test",true,new Stat())));
         zooKeeper.setData("/test","BB".getBytes(),-1);
